@@ -43,7 +43,7 @@ class C_Code:
             print("building C code")
             self.ffibuilder.set_source("_triggering",  # name of the output C extension
                                        """ #include "triggering.h" """,
-                                       sources=[os.path.join(c_code_path, 'triggering.c')],  # includes pi.c as additional sources
+                                       sources=['triggering.c'],  # includes pi.c as additional sources
                                        libraries=[], )  # on Unix, link with the math library
             self.ffibuilder.compile(c_code_path, verbose=False)
             from _triggering.lib import find_trigger_position, create_timing_data, create_pretrigger_timing_data, \

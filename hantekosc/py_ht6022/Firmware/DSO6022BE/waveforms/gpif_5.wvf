@@ -1,0 +1,17 @@
+; waveform source file for gpif_compiler
+;
+; Comment header
+;
+	.WAVEFORM 	5		; 5 MS/s (6 cycles @ 30 MHz)
+
+	.TRICTL		1		; Assume TRICTL=1
+
+	.IFCLKSRC	1		; feed internal 30/48 MHz to the GPIF
+	.3048MHZ	0		; 30 MHz
+	.IFCLKOE	0		; IFCLK tri-state, CTL0 CTL2 drives the ADC
+
+	D	3			OE0 OE2			; 3 cycles, CTL0 CTL2 low
+	Z	2			CTL0 CTL2 OE0 OE2	; 2 cycles, CTL0 CTL2 high
+	J 	RDY0 AND RDY0 $0 $0	CTL0 CTL2 OE0 OE2	; 1 cycle, CTL0 CTL2 high, jp 0
+
+; End

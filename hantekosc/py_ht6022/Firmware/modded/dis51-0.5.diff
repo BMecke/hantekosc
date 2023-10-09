@@ -1,0 +1,51 @@
+--- main.c.orig	2003-11-05 03:52:50.000000000 +0100
++++ main.c	2019-03-06 20:29:51.858260295 +0100
+@@ -40,8 +40,8 @@
+ 	struct hexfile hf;
+ 	int i;
+ 	int entry = 0;
+-	char *p, *q;
+-	unsigned long ul; 
++	//char *p, *q;
++	//unsigned long ul; 
+ 	
+ 	Lst = 0;
+ 	
+@@ -71,21 +71,22 @@
+ 
+ 		/* use entry points from command line */
+ 		for (; i < argc; ++i) {
+-			if(!Lst)
+-				sscanf(argv[i], "%d", &entry);
+-			else {
+-				p = q = argv[i];
+-				if(*p == '\0') {
+-					fprintf(stderr, "Warning: NULL argument on command line.\n");
+-					continue;
+-				}
+-				ul = strtoul(p, &q, 0);
+-				if(*q != 0) {
+-					fprintf(stderr, "Error: Bad address '%s'. Abort\n", argv[i]);
+-					exit(1);
+-				}
+-				entry = (int)ul;
+-			}
++			//if(!Lst)
++				sscanf(argv[i], "%x", &entry);
++			//else {
++			//	p = q = argv[i];
++			//	if(*p == '\0') {
++			//		fprintf(stderr, "Warning: NULL argument on command line.\n");
++			//		continue;
++			//	}
++			//	ul = strtoul(p, &q, 0);
++			//	if(*q != 0) {
++			//		fprintf(stderr, "Error: Bad address '%s'. Abort\n", argv[i]);
++			//		exit(1);
++			//	}
++			//	entry = (int)ul;
++			//}
++			//fprintf( stderr, "pass1( 0x%04X )\n", entry );
+ 			pass1(&hf, entry);
+ 		}
+ 	}

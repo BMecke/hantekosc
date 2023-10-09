@@ -1,0 +1,36 @@
+[build-system]
+requires = ["setuptools>=60", "setuptools-scm>=8.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "hantekosc"
+authors = [
+    {name = "Bruno Mecke", email = "info@bmecke.de"},
+]
+description = "Python interface with integrated software trigger for controlling USB oscilloscopes from Hantek."
+readme = "docs/sphinx/source/readme.rst"
+requires-python = ">=3.10"
+keywords = ["oscilloscope", "software-trigger", "hantek", "6022BE", "6022BL"]
+license = {text = "OSI Approved :: GNU General Public License v3 (GPLv3)"}
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Operating System :: POSIX :: Linux",
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Science/Research",
+    "Topic :: Scientific/Engineering"
+]
+dependencies = ["numpy", "cffi", "libusb1"]
+dynamic = ["version"]
+
+[project.urls]
+Homepage = "https://github.com/BMecke/hantekosc"
+
+[project.optional-dependencies]
+doc = ["Sphinx", "sphinx-rtd-theme"]
+example = ["matplotlib"]
+
+# Get version from Git
+[tool.setuptools_scm]
+
+# ... other project metadata fields as specified in:
+#     https://packaging.python.org/en/latest/specifications/declaring-project-metadata/

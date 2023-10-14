@@ -8,7 +8,7 @@ def list_connected_hantek_devices():
     Returns:
         list(dict): A list containing a dict containing 'Manufacturer', 'Model' and 'Serial Number' for each device
     """
-    scope = hantekosc.PyHT6022.LibUsbScope.Oscilloscope()
+    scope = hantekosc.py_ht6022.LibUsbScope.Oscilloscope()
     usb_device_list = scope.context.getDeviceList(skip_on_error=True)
     device_list = []
 
@@ -16,7 +16,7 @@ def list_connected_hantek_devices():
         # Hantek 6022BE
         if (device.getVendorID() == scope.FIRMWARE_PRESENT_VENDOR_ID or device.getVendorID() ==
                 scope.NO_FIRMWARE_VENDOR_ID) and device.getProductID() == scope.PRODUCT_ID_BE:
-            hantek_6022be = hantekosc.PyHT6022.LibUsbScope.Oscilloscope(device.getVendorID(), device.getProductID())
+            hantek_6022be = hantekosc.py_ht6022.LibUsbScope.Oscilloscope(device.getVendorID(), device.getProductID())
             hantek_6022be.setup()
             if not  hantek_6022be.open_handle():
                 sys.exit(-1)

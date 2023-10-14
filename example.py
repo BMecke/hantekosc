@@ -1,7 +1,10 @@
 import matplotlib.pyplot as plt
 from matplotlib.animation import FuncAnimation
 
+from hantekosc import devices
 from hantekosc import oscilloscope
+
+print(devices.list_connected_hantek_devices())
 
 osc = oscilloscope.Oscilloscope()
 osc.channels[0].voltage_range = 5
